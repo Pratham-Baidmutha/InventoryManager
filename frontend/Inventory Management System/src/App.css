@@ -1,0 +1,40 @@
+body{
+    font-family: sans-serif;
+}
+
+#qr-form{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 30px;
+    border: 2px solid black;
+    padding: 20px;
+    width: fit-content;
+}
+
+#table{
+    display: flex;
+    max-width: fit-content;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.tablecell{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    
+}
+
+.tablehead{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    
+}
