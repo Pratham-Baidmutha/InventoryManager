@@ -7,8 +7,8 @@ const cors =require('cors')
 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var qrCompRouter = require('./routes/qrComp');
+// var usersRouter = require('./models/UserModel');
+// var qrCompRouter = require('./models/qrComp');
 
 var app = express();
 
@@ -26,11 +26,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/qrComp',qrCompRouter)
+// app.use('/users', usersRouter);
+// app.use('/qrComp',qrCompRouter)
 
 
 

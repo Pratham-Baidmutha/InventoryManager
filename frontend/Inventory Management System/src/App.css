@@ -1,5 +1,52 @@
-body{
+html,body{
     font-family: sans-serif;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+
+}
+
+#brandlink{
+    text-decoration: none;
+    color: #000;
+    font-size: 1rem;
+}
+
+#qrlinks{
+    text-decoration: none;
+    color: #000;
+    font-size: 0.9rem;
+}
+
+#navbtn{
+    font-size: 1.1rem;
+    background-color: rgb(28, 28, 145);
+    color: #fff;
+    padding: 7px 14px;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    text-decoration: none;
+}
+
+#regbtn{
+    font-size: 1.1rem;
+    background-color: #fff;
+    color: rgb(28, 28, 145);
+    padding: 7px 14px;
+    outline: none;
+    border: 1px solid rgb(28, 28, 145);
+    border-radius: 7px;
+    text-decoration: none;
+}
+
+
+#table-block{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #qr-form{
@@ -8,33 +55,139 @@ body{
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    gap: 30px;
-    border: 2px solid black;
-    padding: 20px;
+    gap: 20px;
+    border: 2px solid navy;
+    padding: 30px;
     width: fit-content;
 }
 
+#qr-form h2{
+    font-size: 1.4rem;
+    color:  rgb(44, 44, 208);
+}
+
+#qr-form button{
+    width: 300px;
+    padding: 8px 15px;
+    background-color: rgb(44, 44, 208);
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#qr-form .form-input{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#qr-form .form-selector{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+     gap: 30px;
+}
+
+#qr-form input{
+  width: 300px;
+  padding: 8px 15px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: 1px solid #555;
+}
+
+#qr-form input [type=date]{
+    width: 300px;
+    padding: 8px 15px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 3px solid #555;
+}
+
+
+
 #table{
     display: flex;
-    max-width: fit-content;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
     gap: 40px;
+    padding: 50px;
+    border: 2px solid rgb(12, 12, 93);
 }
 
-.tablecell{
+tr{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 50px;
-    
+    gap: 80px;
+   
 }
 
-.tablehead{
+.tabletop{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 40px;    
+    color: navy;
+}
+
+
+#projectnav{
+    height: 50px;
+    padding: 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 80vw;
+    padding-left: 50px;
+}
+
+#projectnav div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
     gap: 50px;
-    
+}
+#projectnav div h4 {
+    font-family: sans-serif;
+    text-decoration: none;
+    font-size: 1.2rem;
+
+}
+
+#qrinput{
+    display: none;
+}
+
+#container{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#qrscanner{
+    /* background-color: aqua; */
+    border: 2px solid navy;
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+    gap: 50px;
+    text-align: center;
+    padding: 60px;max-width: fit-content;
+
+}
+
+#qrscanbtn{
+    padding: 7px 14px;
+    outline: none;
+    background-color: aquamarine;
+    border: none;
+    font-size: 1rem;
+    border-radius: 6px;
 }

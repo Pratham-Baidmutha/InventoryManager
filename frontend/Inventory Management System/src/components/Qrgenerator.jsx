@@ -1,25 +1,31 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useId } from 'react'
 import QrCode from "qrcode"
+import { useHistory } from 'react-router-dom'
 
-function Qrgenerator({setData}) {
-  const [opt, setopt] = useState("C1")
+
+function Qrgenerator({ setData  }) {
+  const history = useHistory();
+
+
+  const [name, setname] = useState("C1")
   const [items, setitems] = useState("")
-  const [date, setdate] = useState("")
+  const [dateRecieved, setdateRecieved] = useState("")
   const [src, setsrc] = useState("")
-
+  const id = useId()
   const options = ["C1", "C2", "C3", "C4", "C5"]
+
 
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const data = JSON.stringify({ opt, items, date })
+      const data = JSON.stringify({ name, items, dateRecieved,id })
       const qr = await QrCode.toDataURL(data)
       setsrc(qr);
 
       const _json = {
-        opt, date, items, src : qr
+        id, name, dateRecieved, items, src: qr
       }
       const response = await fetch('http://localhost:3000/api/data', {
         method: 'POST',
@@ -29,9 +35,22 @@ function Qrgenerator({setData}) {
         body: JSON.stringify(_json)
       })
 
+      const json = await response.json()
+      console.log(json);
+
+      if (json.success) {
+        history.push('/')
+        window.location.reload()
+      }
+
+
       // const data = await response.json()
       // setsrc(data)
-      setData(prev => [...prev , _json])
+      setData(prev => [...prev, _json])
+
+
+
+
 
     } catch (error) {
       console.log('Error:', error)
@@ -40,15 +59,16 @@ function Qrgenerator({setData}) {
   }
 
   return (
-    <div >
+    <div id="container" >
       <form id='qr-form' onSubmit={handleSubmit}>
-        <h3>Generate QR</h3>
+        <h2>Generate QR</h2>
+         
+        <div className='form-selector'>
 
-        <label>
-          Select Component
+        <label> Select Component:</label>
           <select
-            value={opt}
-            onChange={(e) => { setopt(e.target.value) }}
+            value={name}
+            onChange={(e) => { setname(e.target.value) }}
           >
             {
               options.map((option, index) => {
@@ -56,15 +76,21 @@ function Qrgenerator({setData}) {
               })
             }
 
-          </select>
-        </label>
+          </select>      
+        </div>
+        
+        <div className='form-input'>
         <label>Number of items Recieved:
-          <input type="number" onChange={(e) => setitems(e.target.value)} value={items} />
         </label>
+        <input type="number" onChange={(e) => setitems(e.target.value)} value={items} />
+        </div>
 
+        <div className='form-input'>
         <label>Date Recieved:
-          <input type="date" onChange={(e) => setdate(e.target.value)} value={date} />
         </label>
+        <input type="date" onChange={(e) => setdateRecieved(e.target.value)} value={dateRecieved} />
+        </div>
+
         <button type="submit">Generate QR</button>
 
       </form>
